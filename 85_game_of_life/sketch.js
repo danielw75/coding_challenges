@@ -9,18 +9,43 @@ function make2DArray(cols, rows) {
   return arr;
 }
 
-//	Variables of grid
 let grid;
+let cols;
+let rows;
+// Set resolution for cell size
+let resolution = 40;
 
 function setup() {
+	createCanvas(800, 800);
 
-	//	Define Grid 2D Array
-	grid = make2DArray(10, 10);
+	cols = width/resolution;
+	rows = height/resolution;
 
-	for (let i = 0; i < 10; i++) {
-		for (let j = 0; j < 10; j++) {
-			//	Fill it w/ 0s and 1s
+	//	2D Array
+	grid = make2DArray(cols, rows);
+
+	for (let i = 0; i < cols; i++) {
+		for (let j = 0; j < rows; j++) {
+			
 			grid[i][j] = floor(random(2));
+		}
+	}
+}
+
+function draw() {
+	background(0);
+
+	for (let i = 0; i < cols; i++) {
+		for (let j = 0; j < rows; j++) {
+			
+			let x = i * resolution;
+			let y = j * resolution;	
+
+			if (grid[i][j] == 1) {
+				fill(255);
+				noStroke();
+				rect(x, y, resolution, resolution);
+			}
 		}
 	}
 }
