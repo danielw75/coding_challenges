@@ -43,8 +43,8 @@ function draw() {
 
 			if (grid[i][j] == 1) {
 				fill(255);
-				noStroke();
-				rect(x, y, resolution, resolution);
+				stroke(0);
+				rect(x, y, resolution - 1, resolution - 1);
 			}
 		}
 	}
