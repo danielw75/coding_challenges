@@ -13,16 +13,12 @@ let resolution = 5;
 
 function setup() {
   frameRate(5);
-  createCanvas(800, 800);
+  createCanvas(3840/2, 2160/2);
   cols = width / resolution;
   rows = height / resolution;
 
-  grid = make2DArray(cols, rows);
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      grid[i][j] = floor(random(2));
-    }
-  }
+  // Call Reset
+  resetSketch();
 }
 
 function draw() {
@@ -74,4 +70,20 @@ function countNeighbors(grid, x, y) {
   }
   sum -= grid[x][y];
   return sum;
+}
+
+//	RESET FUNCTION
+function resetSketch() {
+	grid = make2DArray(cols, rows);
+
+	for (let i = 0; i < cols; i++) {
+	for (let j = 0; j < rows; j++) {
+	    grid[i][j] = floor(random(2));
+	}
+  }
+}
+
+//	CALL WITH MOUSE PRESS
+function mousePressed() {
+	resetSketch();
 }
