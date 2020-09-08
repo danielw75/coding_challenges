@@ -9,16 +9,17 @@ function make2DArray(cols, rows) {
 let grid;
 let cols;
 let rows;
-let resolution = 5;
+let resolution = 10;
 
 function setup() {
   frameRate(5);
-  createCanvas(3840/2, 2160/2);
+  createCanvas(1920*2, 1080*2);
   cols = width / resolution;
   rows = height / resolution;
 
   // Call Reset
   resetSketch();
+  
 }
 
 function draw() {
@@ -31,7 +32,9 @@ function draw() {
       if (grid[i][j] == 1) {
         fill(255);
         stroke(0);
-        rect(x, y, resolution - 1, resolution - 1);
+        // rect(x, y, resolution - 1, resolution - 1);
+        ellipseMode(CORNER);
+        ellipse(x,y, resolution - 1, resolution - 1);
       }
     }
   }
